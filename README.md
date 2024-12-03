@@ -25,3 +25,39 @@
 ---
 
 <span style="color:red; font-size:24px;">❤️</span> <span style="color:blue; font-size:24px;">❤️</span> <span style="color:green; font-size:24px;">❤️</span>
+
+<div id="flower-container"></div>
+
+<script>
+  function createFlower() {
+    const container = document.getElementById('flower-container');
+    const flower = document.createElement('div');
+    flower.className = 'flower';
+    flower.style.left = Math.random() * 100 + 'vw';
+    flower.style.animationDuration = Math.random() * 2 + 3 + 's';
+    flower.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+    container.appendChild(flower);
+
+    flower.addEventListener('animationend', () => {
+      container.removeChild(flower);
+    });
+  }
+
+  setInterval(createFlower, 500);
+</script>
+
+<style>
+  .flower {
+    position: fixed;
+    top: -1vh;
+    transform: translateY(0);
+    font-size: 20px;
+    animation: fall 3s linear forwards;
+  }
+
+  @keyframes fall {
+    to {
+      transform: translateY(105vh);
+    }
+  }
+</style>
